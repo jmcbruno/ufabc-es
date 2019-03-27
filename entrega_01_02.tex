@@ -1,0 +1,152 @@
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+\usepackage{graphicx,url}
+\usepackage[latin1,utf8]{inputenc}
+\usepackage[brazil]{babel}
+%\usepackage{indentfirst} % Pacote para indentar o primeiro parágrafo depois de um título
+%\usepackage[latin1]{inputenc} 
+     
+\sloppy
+
+\title{Projeto de Engenharia de Software\\ Aplicativo para distribuição de informações}
+
+\author{João Victor F. Consonni\inst{1}, Victor H. C. Leite\inst{1}, Matheus Ferreira\inst{1}, \\Matheus Milani\inst{1}, Artur L. Silva\inst{1}, Gustavo F. Fogolin\inst{1}, \\Bruno J. M. de Camargo\inst{1}, Danilo B. Cardoso\inst{1}, Daniel P. Cinalli\inst{1}, Lucas K. Kurokawa\inst{1}}
+
+\address{Centro de Matemática, Cognição e Computação\\ Universidade Federal do ABC
+  (UFABC)\\
+  Av. dos Estados, 5001 - Bangú -- Santo André -- SP -- Brazil
+  %\email{jconsonni, victor.costa, matheus.ferreira, milani.matheus, artur.lazarini, bruno.camargo, danilo.c@aluno.ufabc.edu.br}
+  \email{\{jconsonni, victor.costa, matheus.ferreira, milani.matheus, }
+  \email{artur.lazarini, gustavo.fogolin, bruno.camargo,}
+  \email{danilo.c, dpcinalli, kenzo.kurokawa\}@aluno.ufabc.edu.br}
+}
+
+\begin{document} 
+
+\maketitle
+
+\begin{abstract}
+Proposal of a mobile application with the purpose of assisting and informing the population about natural disasters, generating interactive maps with information and tips about incidents in the regions of interest for the user. The Application will use information from government agencies and collaborative actions of users close to the incidents.
+\end{abstract} 
+  
+\begin{resumo} 
+  Proposta de aplicativo mobile com o intuito de auxiliar a população sobre desastres naturais, gerando mapas interativos com informações e dicas sobre incidentes em regiões de interesse do usuário. O Aplicativo utilizará informações de órgãos governamentais e ações colaborativas de usuários próximos aos incidentes.
+\end{resumo}
+
+
+\section{Informações Gerais}
+\subsection{Título do Projeto}
+
+O aplicativo será um meio no qual a população, de maneira geral, poderá se ajudar colaborativamente trazendo informações sobre incidentes ambientais locais que fogem da situação corriqueira da população. A partir disto, foi o escolhido o nome SACI - Sistema de Apoio Colaborativo de Incidentes. 
+
+\subsection{Definição do Problema e Justificativa do Projeto}
+
+De acordo com o Centro Nacional de Monitoramento e Alerta de Desastres Naturais, ou CEMADEN, os principais desastres naturais no Brasil em numero e intensidade são ocasionadas por inundações, enxurradas e deslizamentos de massa, estes causando grandes prejuízos de vidas humanas e materiais.
+
+A gestão de incidentes como inundações e enxurradas contam também com a participação e cooperação de outros órgãos governamentais, como a Agência Nacional de Águas (ANA) e a Companhia de Pesquisa de Recursos Minerais (CPRM), operando 24 horas por dia, sem interrupção, monitorando, em todo o território nacional, as áreas de risco de 957 municípios classificados como vulneráveis a desastres naturais. Entre outras competências, envia os alertas de desastres naturais ao Centro Nacional de Gerenciamento de Riscos e Desastres (CENAD), do Ministério da Integração Nacional (MI), auxiliando o Sistema Nacional de Defesa Civil. Entre 2011 e 2016, aproximadamente 5 mil alertas foram gerados ao CENAD. % \cite{CENAD}
+
+Apesar de possuir órgãos especializados na gestão, verificação e emissão de alertas a nível nacional, é necessário ainda uma interface mais amigável ao usuário, que possa fornecer informações transparentes e rápidas aos usuários de maneira colaborativa.
+
+
+\subsection{Descrição do Público-Alvo}
+
+Baseado nas utilidades do aplicativo, que enviará e coletará informações sobre incidentes, podemos assumir que o principal público-alvo do projeto serão as pessoas que estão situadas ao redor das áreas de risco para incidentes, podendo assim receber o máximo de informações sobre o estado atual das redondezas para que possam tomar ações preventivas em casos de alerta de risco por demais usuários.
+
+Além das pessoas que se situam ao redor, podemos também citar toda e qualquer pessoa que tenha interesse nos incidentes, como pesquisadores e equipes de emergência para se manterem a postos para o caso de risco iminente.
+
+\subsection{Descrição dos Stakeholders (Interessados)}
+
+Os interessados no projeto dependem do âmbito de ocorrência do incidente ambiental, podendo variar em esfera federal, estadual ou municipal. Na maioria dos casos aplicáveis ao território nacional (como tempestades, enchentes, falta de energia) é de interesse de órgãos da defesa civil, vinculadas ao governo do estado. 
+
+No caso do Estado de São Paulo, o órgão gestor dos recursos hídricos é o Departamento de Águas e Energia Elétrica - DAEE, que atua de maneira descentralizada no atendimento aos municípios, usuários e cidadãos, executando a Política de Recursos Hídricos do Estado de São Paulo, nos termos da Lei 7.663/91.
+
+Desta forma, o produto descrito neste documento é de interesse de entidades governamentais.
+
+\subsection{Descrição do Perfil da Equipe}
+%Tabela com nomes e funções
+
+%Descrição do time
+\begin{description}
+\item[Matheus Ferreira (Scrum Master),] Técnico em Eletrônica pelo SENAI São Paulo. Graduando no Bacharelado em Ciência da Computação na UFABC, trabalhou durante dois anos na UFABC Jr. passando pelos cargos de Diretor Administrativo e Financeiro,. Hoje trabalha no Banco Itaú como Analista Jr. desenvolvendo aplicações em Java e JavaScript, atreladas à metodologia de processos BPM. Tem experiência com automação de processos, modelagem de negócios, análise de dados e implementação de software.
+\subitem \textbf{MBTI:} ISTJ;
+\subitem \textbf{Habilidades Técnicas e Ferramentas: } DevOps, BPM, Java, JavaScript.
+\newline
+\item[João Victor F. Consonni (Product Owner),] Formado em Engenharia Aeroespacial pela Universidade Federal do ABC, com graduação-sanduíche pela Arizona State University (ASU). Hoje cursa Ciência da Computação na UFABC. Tem experiência em pesquisa  e desenvolvimento de redes modulares de sensores de áudio, também com gerenciamentos de projetos e riscos, gestão de cadeia logística e otimização de recursos humanos. Trabalha no suporte ao desenvolvimento ABAP/SAP como parte do seu estágio no setor de TI da Pirelli Comercial. 
+\subitem \textbf{MBTI:} INFP;
+\subitem \textbf{Habilidades Técnicas e Ferramentas:} Excel, Matlab, SolidWorks, Fortran, C, Java.
+\newline
+\item[Artur Lazarini Silva,] Graduando em Ciência da Computação na UFABC e trabalha como Técnico em Eletrônica na Nice Brasil - TheNiceGroup. Tem experiência em sistemas de acesso à residências, condomínios e empresas, e também no desenvolvimento de hardware e software embarcado.
+\subitem \textbf{MBTI:} ISTP;
+\subitem \textbf{Habilidades Técnicas e Ferramentas:} Java, C, C\#, Design de Placas de Circuíto Impresso (PCB);
+\newline
+\item[Bruno J. M. de Camargo,] Técnico em Informática pela Escola Técnica Estadual de São Roque (ETECSR). Graduando nos bacharelados em Ciência da Computação e Neurociência pela UFABC. Tem experiência com Social Listening, processos de Bussiness Intelligence e Psicofísica. Atualmente faz estágio em Quality Assurance no CTIO - TIM Brasil. 
+\subitem \textbf{MBTI:} INTP;
+\subitem \textbf{Habilidades Técnicas e Ferramentas:} Excel, Python, Illustrator, Photoshop.
+\newline
+\item[Daniel Cinalli,]  Cursa Ciência da Computação e Engenharia de Instrumentação, Automação e Robótica pela UFABC. Formado em Ciência e Tecnologia pela mesma instituição. Possui perfil analítico e facilidade na resolução de problemas. Hoje desenvolve atividades de estágio na Sabesp. 
+\subitem \textbf{MBTI:} ISFJ;
+\subitem \textbf{Habilidades Técnicas e Ferramentas:} Excel, Java, Python.
+\newline
+\item[Danilo Brandão,] \noindent Técnico em Informática pela Escola Técnica Estadual "Dr. Emílio Hernandez Aguilar". Formado em Ciência e Tecnologia e graduando em Ciência da Computação pela UFABC. Tem experiência em Gestão Pública e hoje faz estágio na Belem Pneus Ideal de Franco da Rocha, São Paulo.  
+\subitem \textbf{MBTI:} INTJ;
+\subitem \textbf{Habilidades Técnicas e Ferramentas:} Java, C\#.
+\newline
+\item[Gustavo F. Fogolin,]  Cursa Ciência da Computação na UFABC. Tem experiência com analise dados, mineração de dados e automação de processos, com enfoque na integração de VBA com Excel e Outlook, também na gestão e construção de Indicadores de Performance. Atualmente é Analista de Negócios Jr. no Banco Itaú. 
+\subitem \textbf{MBTI:} INTP;
+\subitem \textbf{Habilidades Técnicas e Ferramentas:} Excel, Java, C, C++, JavaScript;
+\newline
+\item[Lucas Kenzo Kurokawa,]  Estuda Ciência da Computação na UFABC e atualmente é estagiário no Departamento de Pesquisa e Inovação - Inteligência Artificial do Banco Bradesco. Também é Técnico em Informática pela Escola Estadual Técnica "Lauro Gomes". Tem experiência na construção de provas de conceitos e rotinas de pesquisa de Inteligência Artificial.  
+\subitem \textbf{MBTI:} ISFJ;
+\subitem \textbf{Habilidades Técnicas e Ferramentas:} Python, Java, SQL, Administração de Redes, C, C\#, JavaScritpt;
+\\
+\item[Matheus Milani,]  Graduando em Engenharia da Informação pela UFABC. Possui experiência em desenvolvimento WEB   com framework MVC. Atualmente é estagiário na Codus Tecnologia. 
+\subitem \textbf{MBTI:} ISFJ;
+\subitem \textbf{Habilidades Técnicas e Ferramentas:} Ruby on Rails, Ruby, AutoCAD, C, Java, JavaScript, Haskell, Excel, MVC;
+\\ 
+\item[Victor H. C. Leite,]  Graduando em Engenharia da Informação pela UFABC. Possui experiência em pesquisa com enfoque no estudo de reversibilidade de processos em computação quântica, também no desenvolvimento de aplicações em C/C++ para sistemas embarcados. Atualmente faz estágio em desenvolvimento de software na Atech - Negócio em Tecnologia S/A.
+\subitem \textbf{MBTI:} INTJ;
+\subitem \textbf{Habilidades Técnicas e Ferramentas:} C, C++, Java, Excel, Python, Matlab.
+\end{description}
+
+
+\subsection{Descrição das Ferramentas a Serem Utilizadas}
+%Precisa ajustar para identar a esquerda
+\begin{description}
+\item[Trello,] é uma ferramenta para gerenciamento de projetos que pode ser ajustada de acordo com as necessidades do usuário. Nós o utilizaremos para organizar as tarefas da Sprint, onde teremos colunas dividindo os cartões (que representam as tarefas) em “A fazer”, “Fazendo” e “Feito”, além de ser possível identificar quais pessoas da equipe estão em cada tarefa.
+\\
+\item[Google Drive,] é uma plataforma em nuvem que permite a criação de um repositório que será compartilhado por toda a equipe, onde serão colocados arquivos e documentos relevantes para o projeto, além disso, também fornece a ferramenta Google Docs, que será utilizadas para desenvolvimento colaborativo de diversos documentos e relatórios do projeto.
+\newline
+\item[Overleaf - LaTeX,] é uma ferramenta que possibilita a edição de textos usando Latex, onde toda a equipe pode editar o documento simultaneamente, similar ao Google Docs, de modo a uniformizar as formatações dos textos para toda a equipe. Será utilizado para gerar as versões finais dos relatórios e documentos do projeto.
+\newline
+\item[RAD Studio,] é a IDE principal para desenvolvimento de código, depuração, testes, e design de aplicativos para multiplataformas. Esta IDE possui a vantagem de compilação de códigos para diferentes dispositivos, sem a necessidade de desenvolvimento de códigos diferentes.
+\newline
+\item[Lucidchart,] é uma plataforma online para criação de diagramas, onde é possível trabalhar colaborativamente. Será utilizada para produção dos diagramas UML e outros que forem necessários durante o projeto.
+\newline
+\item[Bizagi,]  é uma plataforma digital de negócios, onde é possível modelar processos com ferramentas totalmente baseadas em notação BPMN capazes de oferecer simplicidade e eficiência. Será utilizado para fazer diagramas e modelos de processos.
+\newline
+ \item[WhatsApp,]   é um aplicativo de comunicação com grande difusão no contexto dos usuários brasileiros. Possibilita a troca de informações de forma geral pela equipe, servindo como principal meio de comunicação entre os membros, devido a praticidade, confiabilidade e rapidez com que todos possam receber as informações.
+ \newline
+ \item[Myers-Briggs Type Indicator,] ou Indicador do tipo Myers-Briggs, é um teste de personalidade utilizado mundialmente como instrumento de analise psicológica para auxiliar a descoberta da personalidade por parte do usuário. O MBTI não tem a intenção de medir habilidades, apenas  avaliar as características pessoais, de forma consistente e com reprodutividade \cite{myers1980myers}.
+\end{description}
+
+\subsection{Entregas}
+Por ser a primeiro contato entre as pessoas, e ainda que com Stories/tasks de planejamento, foi introduzido o Scrum e atentamos a nos adaptar no melhor estilo da metodologia, aproveitando sua característica “ágil” , fazendo um começo de trabalho mais leve e aberto para todos, pois este método irá nos permitir mudar o percurso do trabalho, caso haja necessidade durante o planejamento das próximas Sprints.
+
+Para controlar o fluxo de atividades de cada membro da equipe, utilizamos como pontapé inicial o “Trello”, a fim de listar e distribuir stories entre o time. Devido a seu painel ser compartilhado entre a equipe, o Kan Ban foi e será extremamente importante nas entregas, para manter a organização nesse início de trabalho, o que será importante para implementar e enriquecer uma metodologia ágil cada vez mais forte entre nós.
+
+Foram pesquisadas ferramentas ágeis para mensurar e identificar o andamento dos cards e encontrar possíveis “gargalos” que venham a acontecer. Para isso, por exemplo, irá ser implementado o gráfico BurnDown, para acompanhamento do trabalho, em comparação com o que foi planejado para a rodada de Sprint na cerimônia de Planning anterior.
+
+A equipe está empenhada em realizar o projeto com o método ágil Scrum. Por se tratar de um projeto de desenvolvimento de aplicação, intimamente ligado a tecnologia da informação, sabemos que estamos suscetíveis a mudanças durante este percurso (a adequação ao mercado e aos Stakeholders) e para isso, nada melhor que poder refinar e dividir nossas entregas em pequenos períodos de tempo, a fim de gerar mais valor para o cliente e satisfação de todos que estão participando na equipe.
+
+\subsection{Conclusão}
+O relatório destaca, mesmo que introdutoriamente, a definição e qual o intuito de nosso aplicativo, destacando sua importância ao informar as pessoas sobre regiões que possam a vir sofrer por alagamento e/ou enchentes, devido a fortes chuvas.
+
+O aplicativo permite o compartilhamento de dados dinâmicos, através de informações compartilhadas pelos próprios usuários do sistema. Sobre os usuários, serão de suma importância para concretizar e divulgar o aplicativo, bem como principalmente a manutenção de publicações de pontos de risco e alagamentos em tempo real.
+
+Dado a abrangência geográfica e vasto território do país, caracterizado em suas extensões por diversas condições climáticas, estamos sujeitos a passar por situações anormais em nossa vida, no que diz a nosso trajeto cotidiano. Justamente para informar as pessoas quanto aos riscos de chuvas e enchentes, que o aplicativo vem a tona totalmente alinhado a dinamicidade que um dispositivo Mobile tem.
+\nocite{*}
+\bibliographystyle{sbc}
+\bibliography{entrega_01_02}
+
+\end{document}
