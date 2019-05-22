@@ -8,205 +8,321 @@
 \usepackage[]{float} %Pacote que permite fazer posicionamento específico de figura com parâmetro [H]
 
 
-
 \sloppy
 
-\title{Modelagem de aplicativo para distribuição de informações}
+\title{Modelagem de interfaces gráficas}
 
-\author{João Victor F. Consonni\inst{1}, Victor H. C. Leite\inst{1}, Mariana Souza\inst{1}, \\Matheus Milani\inst{1}, Artur L. Silva\inst{1}, Victor C. Denis\inst{1}, \\Bruno J. M. de Camargo\inst{1}, Danilo B. Cardoso\inst{1}, Lucas K. Kurokawa\inst{1}}
+\author{João Victor F. Consonni\inst{1}, Victor H. C. Leite\inst{1}, Mariana D. Souza\inst{1}, \\Matheus Milani\inst{1}, Artur L. Silva\inst{1}, Victor C. Denis\inst{1}, \\Bruno J. M. de Camargo\inst{1}, Danilo B. Cardoso\inst{1}, Lucas K. Kurokawa\inst{1}}
 
 \address{Centro de Matemática, Cognição e Computação\\ Universidade Federal do ABC
   (UFABC)\\
   Av. dos Estados, 5001 - Bangú -- Santo André -- SP -- Brazil
   %\email{jconsonni, victor.costa, dantas.souza, matheus.ferreira, milani.matheus, ,artur.lazarini, v.denis , bruno.camargo, danilo.c@aluno.ufabc.edu.br}
-  \email{\{jconsonni, victor.costa, milani.matheus, }
-  \email{artur.lazarini, v.denis, bruno.camargo,}
-  \email{danilo.c, , kenzo.kurokawa\}@aluno.ufabc.edu.br}
+  \email{\{jconsonni, victor.costa,  milani.matheus, }
+  \email{artur.lazarini, v.denis, bruno.camargo, danilo.c,}
+  \email{dantas.souza, kenzo.kurokawa\}@aluno.ufabc.edu.br}
 }
+
 \begin{document} 
 
 \maketitle
 
 \begin{abstract} 
-The software architecture document is essential to understand the high level structures os a software system and therefore for the decision making processes in software engineering. Here we present archtectures  based on the moldels 4+1 and C4 as part of the documentation for the system SACI - Sistema de Apoio Colaborativo de Incidentes. 
+ The software's modeling is one of the main process that shows to the client how the development team understands his requiriments and how to improve them. This document presents some of the screens of the application and which requirimets are in each one.
 \end{abstract}
 
 \begin{resumo} 
-O documento de arquitetura de software é essencial para entender as estruturas de alto nível de um de software e, portanto, para os processos de tomada de decisão em engenharia de software. Aqui apresentamos as arquiteturas baseadas nos modelos 4 + 1 e C4 como parte da documentação do sistema SACI - Sistema de Apoio Colaborativo de Incidentes.
+A modelagem de software é um dos principais processos que mostra ao cliente como o time de desenvolvimento entende os requisitos e como melhora-los. Este documento apresenta algumas telas da aplicação e quais requisitos estão em cada uma.
 \end{resumo}
 
+\newpage
+\tableofcontents   
+\newpage
+
 \section{Introdução}
+A popularização dos dispositivos móveis nos séculos XX e XXI, fizeram com que estes equipamentos eletrônicos se tornassem um dos maiores pontos de contato entre os homens e as maquinas. Os GUIs (Graphical User Interfaces), ou interfaces gráficas de usuário, têm se tornado cada vez mais importantes, pois são as interfaces com que os usuários interagem com as funcionalidades do sistema ou aplicativo.
 
-A documentação de arquitetura de software traz uma abstração de altor nível do sistema a ser desenvolvido, apontando seus componentes internos e sua interação com componentes internos. Sendo assim um guia para a evolução e desenvolvimento de um sistema. Com o aumento da complexidade dos sistemas, a introdução de metologias para modelar a arquitetura desses softwares torna-se essencial para transmissão de informação para diferentes níveis de usuário destas documentações, sendo a base para tomada de decisão principalmente nas fases inciais do projeto. Para Kruchten introdução de 4 + 1, apontava que cada visão de seu modelo se adaptava à um usuário final, simplificando a visão geral do software \cite{kruchten19954+}. Já o modelo C4 de Brown, propunha uma perspectiva diferentes níveis de abstração para introdução das informações de ar quitura ao usuário \cite{C4}. Neste documento aplicamos dois modelos de arquitetura, 4 + 1 e C4, como fase do desenvolvimento do Sistema de Apoio Colaborativo de Incidentes (SACI). 
+%adicionar um breve texto sobre UX
+
+Estes pontos descritos acima norteiam o conceito de usabilidade, que significam permitir ao usuário utilizar as funcionalidade dos aplicativos de forma fluida, sequencial e em ritmo cadenciado, sem muitos esforços. A utilização destes conceitos propiciam uma melhor experiencia que usuário terá durante o uso do software a ser desenvolvido.  
+
+Diversos padrões podem ser utilizados no desenvolvimento das interfaces gráficas. No estudo de \cite{nielsen1993iterative}, cinco pontos chaves são apresentados para uma aplicação:
+
+\begin{itemize}
+    \item \textbf{Fácil de utilizar}, assim o usuário pode rapidamente fazer o aplicativo funcionar sem conhecer o sistema.
+    \item \textbf{Eficiente}, possibilitando que o usuário experiente tenha uma alta produtividade com o aplicativo.
+    \item \textbf{Fácil de lembrar}, assim usuários não frequentes podem retornar a utilizar o aplicativo após um período de inatividade, sem a necessidade de aprender tudo novamente. 
+    \item \textbf{Baixa quantidade de erros}, ou relativamente poucos erros, de modo que o usuário faça poucos erros e que estes erros não sejam catastróficos ao funcionamento do aplicativo.
+    \item \textbf{Agradável ao uso}, de modo que usuário possa aproveitar de forma satisfatória o uso do sistema, assim gostando subjetivamente de usar o sistema.
+\end{itemize}
+
+Este trabalho tem o intuito de verificar a usabilidade do aplicativo SACI, fornecendo a relação de telas e interfaces, os requisitos do sistema levantados em outros trabalhos e os conceitos apresentados acima.
 
 
 
+\section{ Protótipos de interfaces}
 
-\section{Modelo 4+1}
+Para a prototipação das telas, foi utilizada a plataforma Marvel \cite{marvel2019}, simulando o aplicativo SACI em um sistema Android. Apesar do requisito não funcional [RNF07] do documento de requisitos especificar a utilização de sistemas IOS, não foram desenvolvidas telas especificas para este sistema operacional, dado que a caráter de verificação de usabilidade e cumprimento do documento de requisitos, os protótipos de tela desenvolvidos em Android bastam.
 
-O modelo de arquitetura 4+1 busca dividir o processo em visões concorrentes, são diferentes pontos de vista do mesmo software. A justificativa para essa abordagem é que ao fazer essa divisão a representação fica mais acessível aos stakeholders com visões que são mais de alto nível, mostrando o software de várias perspectivas que englobam visão dos usuários finais, desenvolvedores e gerentes de projeto.\cite{kruchten19954+}
+Este documento contem a prototipagem de algumas telas principais do sistema SACI, sendo elas:
+\begin{itemize}% talvez colocar a subseção de cada uma das telas
+    \item\ref{subsec:Seclogin} - Login de usuário.
+    \item \ref{subsec:Seccadastro} - Cadastro de usuário.
+    \item \ref{subsec:Secvermapa} - Ver mapa.
+    \item \ref{subsec:SeccriaInci} - Criar publicação/incidente.
+    \item \ref{subsec:SeceditInci} - Editar publicação/incidente.
+    \item \ref{subsec:SecverInci} - Visualizar publicação/incidente.
+    \item \ref{subsec:SecMenu} - Expansão menu de navegação.
+    \item \ref{subsec:Secnotificacao} - Notificações.
+    \item \ref{subsec:Secconfig} - Configurações.
+    \item \ref{subsec:SecFaq} - Perguntas frequentes e ajuda.
+\end{itemize}
 
-Essa arquitetura apresenta 4 visões que são modeladas através de diagramas UML, sendo elas: visão lógica, visão de desenvolvimento, visão de processo e visão física. Juntas essas visões embasam a visão de cenário, que representa o +1 do modelo.
+\subsection{Login de usuário}\label{subsec:Seclogin}
+A figura \ref{fig:login} representa a prototipação da tela de login do aplicativo e contempla os requisitos: RC21, RC24, TI01, TI02, TI03, TI04 e TI05 contidos no documento de requisitos nas sessões 2.2 e 3.1.1 respectivamente.
 
-\subsection{Visão de Cenário}
+A tela foi dividida em três sessões principais sendo elas: formulário de login, links de ação, login com redes sociais.
 
-A visão de cenário é composta de uma abstração que agrupa as outras 4 visões dos diagramas "4+1" e instancia os casos de uso mais genéricos, gerando de forma simplificada uma visão geral do funcionamento dos requisitos mais importantes do sistema. A visão de cenário também tem o intuito de  auxiliar as fases de teste, durante e depois da implementação do sistema.
+No formulário de login o usuário do aplicativo deve informar seu login e sua senha, caso queira que suas informações sejam auto preenchidas no próximo login ele deve selecionar a opção lembrar senha, para concluir a ação o usuário deve clicar no botão entrar, caso as informações imputadas estejam corretas o usuário é direcionado a tela principal, caso contrário é informado o erro.
 
-O diagrama a seguir representa um compilado dos casos de uso apresentados no documento de diagramas da entrega 2.
+Os links de ação completam a tela de login suportando alguns requisitos do aplicativo permitindo que um usuário novo acesse a tela de cadastro, que um usuário já cadastrado faça login utilizando a biometria ou ainda que um usuário do sistema recupere a senha de acesso.
 
-\begin{figure}[!h]
-    \center{\includegraphics[width=\textwidth]
-    {imagens/"ArcModel4+1"/CasodeusoSaci.png}}
-    \caption{\label{fig:casoUso} Modelo de Arquitetura 4+1 - Diagrama de Caso de uso - Visão de Cenário}
-\end{figure}
+O espaço de login com redes sociais apresenta os ícones das contas que podem ser utilizadas para realizar login no aplicativo, uma vez autenticado o usuário é direcionado a tela principal do aplicativo.
 
-\vfill% para consertar pagebreak
+
+\begin{figure}[h!]
+  \center{\includegraphics[width=0.5\textwidth]
+  {imagens/Interfaces/Login.png}}
+  \caption{Login de usuário.}
+  \label{fig:login}
+\end{figure} 
+\vfill%vfill para consertar pagebreak
 \pagebreak%Quebra de página para consertar imagens
 
-\subsection{Visão Física}
+\subsection{Cadastro de usuário}\label{subsec:Seccadastro}
+A figura \ref{fig:newuser} mostra o protótipo elaborado para a tela de cadastro de usuário que contempla os requisitos: RC20, RC23 e TI06 que estão especificados respectivamente nas sessões 2.2 e 3.1.1 do documento de requisitos.
 
-A visão física consiste em aplicar os requisitos não funcionais do sistema, ligando o hardware com o software a ser implementado. Este mapeamento entretanto serve para nortear o desenvolvimento do software, tendo em si um pequeno impacto no código a ser implementado.
+No que se refere a estrutura a tela foi dividida em duas sessões: a primeira sessão apresentando os ícones de redes sociais e a segunda exibindo um formulário de cadastro.
+
+A primeira sessão, como já foi destacado, é utilizada quando o usuário já possui uma conta em algum dos canais apresentados e deseja associar a conta no SACI com sua rede social existente.
+
+Logo abaixo na segunda sessão é apresentada ao usuário uma segunda opção de cadastro onde é requerido informar os dados de e-mail, login, senha e localização residencial sendo esses campos todos obrigatórios para completar o cadastro na aplicação. Caso o formulário esteja completo e o botão criar conta seja pressionado é gerado um novo usuário com as informações especificadas, caso contrário é emitido um pop-up pedindo que usuário finalize o preenchimento das informações antes de prosseguir para a criação da conta.
 
 
-\begin{figure}[!h]
-    \center{\includegraphics[width=\textwidth]
-    {imagens/"ArcModel4+1"/VisaoFisica.png}}
-    \caption{\label{fig:visaoFisica} Modelo de Arquitetura 4+1 - Diagrama de Hardware - Visão Física}
+
+\begin{figure}[h!]
+  \center{\includegraphics[width=0.5\textwidth]
+  {imagens/Interfaces/Cadastro_de_Usuario.png}}
+  \caption{Cadastro de um novo usuário.}
+  \label{fig:newuser}
+\end{figure} 
+\vfill%vfill para consertar pagebreak
+\pagebreak%Quebra de página para consertar imagens
+
+%Adicionar breve texto de como foi feito, quem fez e quais os requisitos, de acordo com o doc do professor.
+\subsection{Ver mapa}\label{subsec:Secvermapa}
+
+Este protótipo foi construído para a tela principal, que é a de visualização do mapa, e atende os requisitos de cliente: RC01 e RC09, e os requisitos funcionais: TP01, TP02, TP03, TP04, TP05, TP06, TP07, TP10 e TP11, que estão especificados respectivamente nas sessões 2.2 e 3.1.2 do documento de requisitos.
+
+A estrutura desta tela é composta de 2 sessões, o mapa e uma barra inferior. 
+
+Na sessão do mapa, é utilizado para que o usuário possa navegar pelo mapa com o toque ou através do campo de busca. Além disso, também é disponibilizado os balões que indicam qual tipo (pela cor), quantas e em quais locais existem publicações sobre incidentes.
+
+Na sessão da barra inferior, o usuário pode utilizar de filtros para fazer uma busca mais avançada de publicações e também é disponibilizado para ele as informações da área em que está ou que ele buscou.
+
+
+
+\begin{figure}[h!]
+  \center{\includegraphics[width=0.5\textwidth]
+  {imagens/Interfaces/VerMapa.png}}
+  \caption{Ver mapa.}
+  \label{fig:vermapa}
+\end{figure} 
+\vfill%vfill para consertar pagebreak
+\pagebreak%Quebra de página para consertar imagens
+
+%Adicionar breve texto de como foi feito, quem fez e quais os requisitos, de acordo com o doc do professor.
+\subsection{Criar publicação/incidente}\label{subsec:SeccriaInci}
+
+A \ref{fig:newnot} é a tela de criação de notificação. Nela é possível incluir o tipo de incidente, que ao clicar irá abrir o menu dropdown. Logo abaixo, deverá ser escolhida a localização do incidente, sendo que essa só pode ser feita a 300m do usuário, atendendo ao requisito CI03. 
+Além da localização, uma descrição da ação, que é obrigatório como descrito no requisito CI01 poderá ser preenchida no campo cinza.
+Logo abaixo, o campo de fotos que mostra as fotos já selecionadas se houverem, um botão para abrir a câmera e outro botão para anexar uma foto já tirada.
+
+Essa tela atende aos requisitos funcionais CI01, CI02, CI03, CI04, CI06 CI07 CI08 e RC02.
+
+
+
+
+\begin{figure}[h!]
+  \center{\includegraphics[width=0.5\textwidth]
+  {imagens/Interfaces/New_not.PNG}}
+  \caption{Criação de nova notificação.}
+  \label{fig:newnot}
 \end{figure}
 
 \vfill%vfill para consertar pagebreak
 \pagebreak%Quebra de página para consertar imagens
 
-\subsection{Visão de Processo}
 
-A visão de processo busca descrever como ocorrem as atividades da aplicação, descrevendo qual a ordem dos processos e como ocorre a comunicação entre eles através da estrutura de elementos de execução. Ela facilita o entendimento de como a informação é tratada dentro da aplicação representando os principais componentes e suas interações.
-Para modelar essa visão foi utilizado o diagrama de atividades a seguir, o diagrama mostra o fluxo principal de atividade da aplicação (porém não todo o fluxo). O diagrama contempla os requisitos a seguir: RC02, RC03, RC04, RC05, RC06, RC07, RC09, RC20, TI01, TP01, TP02, TP09, TP11 e VI01.
+%Adicionar breve texto de como foi feito, quem fez e quais os requisitos, de acordo com o doc do professor.
+\subsection{Editar Publicação}\label{subsec:SeceditInci}
 
-\begin{figure}[!h]
-    \center{\includegraphics[width=\textwidth]
-    {imagens/"ArcModel4+1"/processView.png}}
-    \caption{\label{fig:processView} Modelo de Arquitetura 4+1 - Diagrama de Atividade - Visão de Processo}
+A figura 3 mostra o protótipo da tela de edição de publicação. Este protótipo contempla os requisitos RC15, RC16, RC19, EI01, EI02, EI03.
+
+Os campos da publicação poderão ser editados livremente caso esta ainda não tenho sido atualizada por outros usuários, caso já tenha, irá seguir o que é definido no documento de requisitos. Para alterar os campos será necessário ao usuário apenas clicar neles, onde irá aparecer as opções de seleção de opção relacionada ao campo ou o input de texto. 
+
+As fotos podem ser removidas selecionando-as nas miniaturas, ao serem selecionadas será exibida a caixa de dialogo para remoção. Para adicionar mais fotos basta clicar no ícone da câmera, que redirecionara o aplicativo para a ferramenta de captura de imagem, ou clicar no ícone de anexo para incluir uma foto que já foi tirada.
+
+
+
+\begin{figure}[h!]
+  \center{\includegraphics[width=0.5\textwidth]
+  {imagens/Interfaces/EditarPub.png}}
+  \caption{Editar Publicação.}
+  \label{fig:edit_publi}
+\end{figure}
+\vfill%vfill para consertar pagebreak
+\pagebreak%Quebra de página para consertar imagens
+
+%Adicionar breve texto de como foi feito, quem fez e quais os requisitos, de acordo com o doc do professor.
+
+%Adicionar breve texto de como foi feito, quem fez e quais os requisitos, de acordo com o doc do professor.
+\subsection{Visualizar Incidente}\label{subsec:SecverInci}
+A figura \ref{fig:view_incident} mostra o protótipo da tela de visualização de incidente. Nela, contempla-se todos os requisitos da seção 3.1.6. Visualização de Incidente do documento de requisitos do projeto SACI. 
+
+As primeiras coisas que são notadas ao olhar para a tela de visualização de incidentes são o título da publicação e a foto do incidente. A ideia é que olhando estes dois itens os usuários já tenham noção do que foi o ocorrido. O título não possui um texto padrão já que é o autor da publicação quem o escreve.
+
+Caso o autor queria um detalhe a mais do que foi o causador da situação vista na foto e no título a cor roxa se destaca na tela com letras pequenas de forma a chamar atenção como um item secundário. A ideia da classificação do incidente é identificar o fenômeno gerador.
+
+Para mais detalhes recorre-se à descrição do autor e aos comentários de outros usuários. Também há as opções "Incidente Presente"  e "Incidente Passado" identificando a presença ou continuidade do incidente descrito.
+
+
+\begin{figure}[h!]
+  \center{\includegraphics[width=0.5\textwidth]
+  {imagens/Interfaces/Visualizacao_Incidente.png}}
+  \caption{Visualização de Incidente.}
+  \label{fig:view_incident}
+\end{figure}
+\vfill%vfill para consertar pagebreak
+\pagebreak%Quebra de página para consertar imagens
+
+%Adicionar breve texto de como foi feito, quem fez e quais os requisitos, de acordo com o doc do professor.
+\subsection{Expansão menu de navegação}\label{subsec:SecMenu}
+
+A figura \ref{fig:view_menulat} demonstra o protótipo elaborado do menu de rápida navegação. Esta tela não contempla diretamente os requisitos do sistema, entretanto esta tela utiliza os conceitos de usabilidade para melhorar a experiencia do usuário, permitindo que haja uma navegação ágil e fácil de todas as outras telas do aplicativo.
+
+Neste menu, o usuário é capaz de transitar entre as funcionalidade a partir de qualquer tela ou ação do aplicativo. Além de visualizar as informações do usuário logado e permitir que o usuário possa se desconectar com o aplicativo, retornando à tela de Login(\ref{subsec:Seclogin}). A seção de perguntas e respostas rápidas (\ref{subsec:SecFaq}) e as configurações gerais da conta logada (\ref{subsec:Secconfig}) podem ser acessados por meio deste menu.
+
+Ao clicar no ícone de menu localizado no canto superior esquerdo das telas, o menu se expandirá. O usuário pode então selecionar qual subseção ou funcionalidade do software ele deseja executar. O ícone de fechar no canto direito do menu faz com que ele retraia e volte a dar foco na tela anterior. Outra maneira de retrair o menu automaticamente é apertar em uma região fora do menu ou apertando no botão voltar do android.
+
+
+
+\begin{figure}[h!]
+  \center{\includegraphics[width=0.5\textwidth]
+  {imagens/Interfaces/menu_lateral.png}}
+  \caption{Expansão de menu de navegação.}
+  \label{fig:view_menulat}
+\end{figure}
+\vfill%vfill para consertar pagebreak
+\pagebreak%Quebra de página para consertar imagens
+
+%Adicionar breve texto de como foi feito, quem fez e quais os requisitos, de acordo com o doc do professor.
+\subsection{Notificações}\label{subsec:Secnotificacao}
+Em cenários de risco, a Defesa Civil pode emitir alertas para determinadas regiões. Quando isso ocorrer, o sistema do aplicativo verifica a localização do usuário por meio do sistema de geolocalização e, se o usuário estiver próximo à região de alerta ou tiver configurado a região de alerta como favorita, ele recebe uma notificação push-up. Ao clicar na notificação, a tela da Figura \ref{fig:alerta} é exibida.
+
+\begin{figure}[h!]
+  \center{\includegraphics[width=0.5\textwidth]
+  {imagens/Interfaces/Alerta.png}}
+  \caption{Tela de Notificação de Alertas da Defesa Civil.}
+  \label{fig:alerta}
 \end{figure}
 
 \vfill%vfill para consertar pagebreak
 \pagebreak%Quebra de página para consertar imagens
 
-\subsection{Visão de Desenvolvimento}
+O texto da mensagem de notificação será adequado ao contexto, informando a data e o horário do alerta, o tipo de incidente, o motivo desta notificação ter sido apresentada ao usuário (proximidade da zona de risco ou região favoritada), assim como breves orientações. Na parte de baixo são exibidos dois botões, permitindo ao usuário ver mais detalhes a respeito do incidente, direcionando-o para a tela de "Visualizar publicação/incidente", ou apenas confirmar o recebimento da mensagem clicando em "OK". 
 
-O diagrama a seguir demonstra como os componentes do sistema SACI se relacionam, pois esta visão ajuda as pessoas a entenderem como funciona a estrutura e as interdependências dos sistemas englobados.
+Essa tela atende aos requisitos RC08, RC10, RC11 e RC12, RNF02, RNF15, RNF16, RNF17, RD01.
 
-  \begin{figure}[!htb]
-    \center{\includegraphics[width=\textwidth]
-    {imagens/DiagramaComponentes/diagramaComponente.png}}
-    \caption{\label{fig:diagComponentes} Diagrama de Componentes}
-  \end{figure}
+%Adicionar breve texto de como foi feito, quem fez e quais os requisitos, de acordo com o doc do professor.
+\subsection{Configurações}\label{subsec:Secconfig}
+A figura 8 ilustra o protótipo de interface para o a visualização de dados cadastrais, dentro do fluxo de cadastro de um usuário. Pode-se observar os campos de texto com o nome, e-mail e endereço do usuário cadastrados na plataforma de forma clara e objetiva.
 
-\vfill%vfill para consertar pagebreak
-\pagebreak%Quebra de página para consertar imagens
-
-\subsection{Visão Lógica}
-
-A visão lógica representa as entidades do sistema, mostrando as classes e o modelo de banco de dados. Também pode exibir funcionalidades que o sistema disponibilizara para o usuário final. Os diagramas UML usados para representar a visão lógica incluem: Diagrama de classes, Diagrama de comunicação e Diagrama de sequencia.
-Nós modelamos a visão através do diagrama de classe a a seguir. O diagrama de classe aborda todos os requisitos que estão relacionados com os dados que a aplicação processa ou armazena.
-
-\begin{figure}[!h]
-    \center{\includegraphics[width=\textwidth]
-    {imagens/diagClasses.png}}
-    \caption{\label{fig:DiagClasse} Modelo de Arquitetura 4+1 - Diagrama de Classe - Visão Lógica}
+\begin{figure}[h!]
+  \center{\includegraphics[width=0.5\textwidth]
+  {imagens/Interfaces/Configuracoes.png}}
+  \caption{Tela de Configurações.}
+  \label{fig:configuration}
 \end{figure}
 
+Também incluso no fluxo de cadastro de usuários, nesta interface possibilita o usuário alterar sua senha, terminar sua sessão no aplicativo e até excluir sua conta, caso queria.
+
 \vfill%vfill para consertar pagebreak
 \pagebreak%Quebra de página para consertar imagens
 
-\section{Modelo C4}
-O modelo de representação de arquitetura de software C4, sigla para "\textit{Context, Container, Component, Code"}, visa otimizar um dos \textit{side-effects} negativos advindos das metodologias ágeis de processos de desenvolvimento, a representação da arquitetura do software. 
+%Adicionar breve texto de como foi feito, quem fez e quais os requisitos, de acordo com o doc do professor.
 
-De forma simplificada, o modelo tenta mergulhar em diferentes níveis de abstração em cada um dos "C", que resultam em diagramas que documentam desde como a aplicação é inserida no contexto dos seus usuários e seu ecossistema, até níveis mais baixos, demonstrando relacionamentos entre componentes internos do software e, possivelmente, até chegar a nível de código de implementação.
+\subsection{Perguntas frequentes a ajuda}\label{subsec:SecFaq}
+Tela com informações importantes ao usuário, servindo como manual para as principais funções. Pode ser ampliado dependendo das dúvidas do usuário que surgirem pós implementação.
 
-O grupo idealizou o sistema na tentativa de seguir a estrutura de código pregada pelo padrão MVC, portanto, visualizou-se a separação de seções do código em categorias como Models, Controllers e Views.
-A partir desta discussão, definiu-se de maneira superficial, o conteúdo de cada diagrama.
+Os requisitos que englobam cada questão podem variar, no detalhe de da figura 10 temos os requisitos do caso de uso "criar uma publicação" (RC02,RC1,CI01, CI02, CI03, CI04, CI05,CI10); "Notificação da defesa civil" (RC08,  RC10,  RC11,  RC12, TP01, TP02, TP03,TP04, TP05, TP06, TP07, TP10 e TP11) e informações sobre o desenvolvimento do projeto. 
 
-Em um primeiro momento o grupo enfrentou algumas dificuldades em interpretar os conceitos de contexto, contêiner e componente utilizados pelo modelo C4 e como ficaria a de fato a representação final, o que gerou mais discussão, por exemplo, como ficariam distribuídos os componentes e o que faria mais sentido sem exibido em qual diagrama. Adicionalmente, para o grupo, ficou um pouco abstrato demais tratar a estrutura de código como MVC para uma aplicação móvel sem ter muita experiencia prática de fato com o conceito.
-
-Em contra partida, escolheu-se o MVC como ponto de partida pois conceitualmente é de fácil visualização e define boas convenções a serem seguidas quanto ao isolamento de responsabilidades das diferentes frações de uma aplicação, tornando o código mais modularizado e de fácil manutenibilidade.
-
-% =====================================================
-
-% \textbf{To-Do}
-% \begin{enumerate}
-%     \item Requisitos contemplados e não contemplados? Faz sentido???
-% \end{enumerate}
-
-% =====================================================
-
-\subsection{Contexto}
-O Diagrama de Contexto mostra de maneira geral o sistema, sem aprofundar em detalhes técnicos. Este tipo de diagrama é utilizado para mostrar a arquitetura do sistema com foco em representar as interações com seus usuários sendo assim uma visão de alto nível da arquitetura.
-
-\begin{figure}[!h]
-    \center{\includegraphics[width=\textwidth]
-    {imagens/"c4 diagrams"/Context.png}}
-    \caption{\label{fig:diagContexto} Diagrama de Contexto}
+\begin{figure}[h!]
+  \center{\includegraphics[width=0.5\textwidth]
+  {imagens/Interfaces/faq_img.PNG}}
+  \caption{Tela de Configurações.}
+  \label{fig:Perguntas frequentes e ajuda}
 \end{figure}
 \vfill%vfill para consertar pagebreak
-
-
-\pagebreak%Quebra de página para consertar imagens
-
-
-\subsection{Containers}
-O Diagrama de Contêineres descreve um nível menos abstrato que o de contexto. Ele é utilizado por desenvolvedores do software e times de suporte levando uma visão de alto nível do software. Ele demonstra como o software se comporta e com quais sistemas ele se conecta além dos sistemas do próprio software.
-
-\begin{figure}[!h]
-    \center{\includegraphics[width=\textwidth]
-    {imagens/"c4 diagrams"/Server_Container.png}}
-    \caption{\label{fig:diagContainer} Diagrama de Containers}
-\end{figure}
-\vfill%vfill para consertar pagebreak
-
-
-\pagebreak%Quebra de página para consertar imagens
-
-
-\subsection{Componentes}
-O diagrama de componentes aprofunda em mais um nível de abstração, adentrando o escopo interno dos contêineres. Desta forma é possível representar como aquele contêiner é constituído, quais componentes estão inclusos em seu escopo e como é a a interação entre estes componentes. Pode-se especificar em mais detalhes as tecnologias utilizadas e uma visão geral de implementação.
-
-Neste diagrama vemos a como a aplicação seria estruturada em um nível um pouco mais baixo. Neste contexto, conseguimos ver as estruturas idealizadas da arquitetura MVC. Temos um conjunto de modelos (Models), que são responsáveis por orquestrarem a interface aplicação/banco de dados. São representações das entidades do contexto da aplicação, sendo que cada instancia desses modelos representam uma linha da respectiva tabela no banco de dados e cada atributo corresponde à uma coluna da mesma tabela.
-
-Relacionados a estes modelos temos os controladores (Controllers). Serão estas classes que encapsularão grande parte da logica da aplicação. Baseando-se na interação do usuário com a interface do aplicativo, os Controllers decidem o que deve ser feito com os dados recebidos, podendo desde invocar os Models para ler/escrever dados armazenados, até  efetuarem alguma lógica interna que represente uma feature/regra de negócio da aplicação. Quando uma resposta desse processamento é obtida, os Controller se encarregam de invocarem a interface correta (Views) para que o ciclo de interação com usuário continue.
-
-Desta forma, visualizamos a aplicação com uma seção responsável pelo fluxo de cadastro e acesso à aplicação pelos usuários (LoginController, SessionController, UserModel), outra para os fluxos relacionados ao gerenciamento e compartilhamento de incidentes (IncidentController, IncidentModel e Views correspondentes) e por fim uma seção ressonável pelo gerenciamento de alertas baseados nas informação coletadas, tanto internamente, quanto externamente através da comunicação com centrais de medições e com bases da Defesa Civil.
-
-
-\begin{figure}[!h]
-    \center{\includegraphics[width=\textwidth]
-    {imagens/"c4 diagrams"/Components.png}}
-    \caption{\label{fig:diagC4Components} Diagrama de componentes}
-\end{figure}
-\vfill%vfill para consertar pagebreak
-
-\pagebreak%Quebra de página para consertar imagens
+\pagebreak
 
 \section{Discussão}
-Nasta etapa do projeto, foi desenvolvida a arquitetura de software com base em dois modelos arquiteturais: 4+1 e C4. Ambos utilizaram como referência os diagramas construídos na etapa anterior, assim como o documento de requisitos.
 
-Durante este processo ficou evidente a interrelação entre cada um dos documentos desenvolvidos até então, assim como a importância da criação destes artefatos como forma de centralizar e elucidar todas as informações necessárias ao desenvolvimento do software, permitindo, assim, maior coerência das funcionalidades e organização do produto. Além disso, a elaboração destes documento consiste uma etapa importante para garantir a difusão do conhecimento dentor da equipe, assim como concordância das suas características.
+Uma boa interface é essencial para um bom produto de software, pois ela é a única responsável pela comunicação dos usuários com o software, ela deve se adequar aos usuários proporcionando uma boa usualidade para o dia a dia. Quanto mais amigável, fácil de utilizar e com componentes mais padronizados, melhor.
 
-Para as próximas fases de projeto, este documento, assim como os documentos anteriores, terão o importante papel de facilitar a comunicação tanto entre os membros da equipe, quanto com o cliente.
+Além disso, a modelagem dos protótipos de interface proporcionam um novo ponto de vista sobre o projeto, um ponto de vista bem acessível aos clientes e futuros usuários da aplicação, os protótipos devem ser apresentado aos clientes para validação e confirmação dos requisitos já definidos anteriormente e para possíveis apresentações de melhorias ou modificações. Para se alcançar uma interface de qualidade é essencial uma validação constante com os usuários.
+
+Por fim, as interfaces servem como mais um meio de validação de requisitos e atualização dos mesmos, pois durante o a sua modelagem nos damos conta de muitos fatores e detalhes relevantes a aplicação que podem ser difíceis de serem visualizados sem estes protótipos.
+
 
 \section{Conclusão}
-O processo de elaboração da arquitetura do software, baseada em modelos bem consolidados e concisos, foi bastante enriquecedora para a percepção de quão complexo é o processo de desenvolvimento de um software. Um produto aparentemente simples, como o que estamos desenvolvendo, já requer um volume bastante grande especificações, de forma a tornar possível a sua implementação planejada, reduzindo o risco do projeto e eventuais custos com retrabalho.
 
-Para garantir a qualidade do software e a satisfação do cliente, o processo de documentação e modelagem agrega um valor difícil de ser mensurado, mas ainda assim evidente, principalmente para aqueles envolvidos no processo de criação em si. Documentos como este ajudam a definir o produto. Quando há clareza quanto ao “o quê” deve ser desenvolvido, o processo se torna mais fluido e menos desgastante. Desta forma, o conjunto dos documentos produzidos até então constituem uma base sólida para a criação do nosso produto.
+A possibilidade de definir a identidade visual do software antes do desenvolvimento do front-end permite que decisões de design sejam tomadas muito mais rapidamente e prováveis alterações sejam feitas de forma mais direta e sem grande trabalho. Com a facilidade de ter em mãos a interface gráfica do projeto todo o desenvolvimento fica mais orientado e os desenvolvedores mais alinhados com o que precisa ser desenvolvido.
+
+O desenvolvimento das interfaces gráficas do SACI pela equipe consolidou a ideia do plicativo que tínhamos em nossas mentes com detalhes diferentes para cada integrante do grupo. Devido o documento de requisitos estar bem separado quanto as funcionalidades do software foi fácil a definição dos casos de uso e consequentemente quais as telas necessárias para o funcionamento do SACI.
+
+O grupo não desenvolverá o front-end do aplicativo mas ficou evidente o quão facilitador é definir os detalhes de design, as decisões de posição, cor, tamanho e formas sem precisar desenvolver as linha de código.
 
 \section{Como o processo de Scrum foi seguido pela equipe}
-Por tratar-se de um fluxo incremental e iterativo, o processo SCRUM é ideal para a elaboração de documentos que devem, justamente, definir do que se trata o produto. No início, as funcionalidades, do produto ainda estão em um estado abstrato e as ideias a respeito do que o produto faz, e o que não faz, estão, de certa forma, difusas. A cada sprint, o produto ganha mais forma, ficando mais claro na mente da equipe.
+Para este entregável, a equipe SCRUM se organizou de forma a permitir que cada membro do grupo pudesse fazer, ao menos, uma tela da interface. Assim, utilizamos o Trello como ferramenta de distribuição de tarefas e, ao invés de definir na planning o que cada um faria, criamos os cards no Trello e deixamos para cada um escolher uma tela. A divisão de telas ficou como descrito na Tabela \ref{tabela}.
 
-O Trello mostrou-se uma ferramenta fundamental para a divisão de tarefas, assim como para a centralização dos artefatos produzidos e rastreamento do andamento de atividades. Nessa sprint, em específico, o Whatsapp teve um papel excencial na comunicação. Diferente do que foi feito nas sprints anteriores, em que cada membro tinha tarefas que eram, em certo grau, independentes, nesta sprint os modelos arquiteturais foram divididos em duas equipes. Os membros de cada equipe tiveram que trabalhar em conjunto para produzir cada modelo, o que exigiu sincronismo e comunicação frequente. 
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Tela}} & \multicolumn{1}{c|}{\textbf{Responsável}} \\ \hline
+Login de usuário & Mariana D. Souza \\ \hline
+Cadastro de usuário & Mariana D. Souza \\ \hline
+Ver Mapa & Lucas K. Kurokawa \\ \hline
+Criar Publicação & Victor C. Denis \\ \hline
+Editar Publicação & Danilo B. Cardoso \\ \hline
+Visualizar Incidente & Victor H. C. Leite \\ \hline
+Expansão Menu de Navegação & Artur L. Silva \\ \hline
+Notificações & João Victor F. Consonni \\ \hline
+Configurações & Matheus Milani \\ \hline
+Perguntas Frequentes e ajuda & Bruno J. M. de Camargo \\ \hline
+\end{tabular}
+\caption{Responsável por Tela}
+\label{tabela}
+\end{table}
 
-Além disso, os novos membros se adaptaram bem à equipe e contribuíram bastante com o produto. A troca dos integrantes que assumiram os papeis de Scrum Master e Project Owner teve pouco impacto na produtividade da equipe em si, não a afetando perceptivelmente, o que pode ser considerado positivo, pois a produtividade da equipe, que já era muito boa, foi mantida, mesmo com o abalo da mudança na equipe.
+Para o desenvolvimento das telas, criamos uma única conta no Marvel, uma ferramenta online de prototipagem de interfaces para aplicativos voltados para smartphones. Compartilhar uma única conta foi essencial para garantir a padronização no estilo das telas, principalmente na utilização da mesma paleta de cores em todas elas.
 
-O Scrum já está se tornando mais fácil de ser implementado, uma vez que os mebros estão cada vez mais familiares a ele. As reuniões de retrospectiva e review tem ajudado a revisar nossos métodos e a superar nossas dificuldades, como o inicial desconhecimento das ferramentas (Trello, Overleaf, etc.) por parte de alguns membros. A planning foi fundamental para estruturar as tarefas e dividi-la na equipe. 
+Apesar de várias das telas já terem sido previamente elaboradas durante o desenvolvimento dos diagramas de casos de uso, aproveitamos este último entregável para revisitar aquelas telas e propor um novo layout, ainda preocupados em contemplar os pontos levantados no documento de requisitos, porém, desta vez, sob a luz dos modelos arquiteturais 4+1 e C4.
 
+
+
+A elaboração deste documento teve duas dificuldades principais. A primeira foi a de cada um desenvolver uma tela estando todos remotos e disponíveis em momentos distintos. A segunda, foi recapitular toda a documentação que foi feita até aqui para que as telas refletissem as especificações, diagramas e modelos construídos nos documentos anteriores. Por fim, acredito que fizemos um bom trabalho em atingir os objetivos da sprint, mesmo diante das dificuldades mencionadas. 
 
 \bibliographystyle{sbc}
 \bibliography{main}
